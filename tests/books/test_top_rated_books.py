@@ -1,3 +1,7 @@
+"""
+Tests for the /books/{book_id}/top-rated endpoint
+"""
+
 import json
 
 from src.constants import BOOK_SEARCH_ENDPOINT

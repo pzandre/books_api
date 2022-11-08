@@ -1,3 +1,7 @@
+"""
+Tests for the /books/ endpoint
+"""
+
 from src.constants import BOOK_SEARCH_ENDPOINT, PROJECT_URL
 
 

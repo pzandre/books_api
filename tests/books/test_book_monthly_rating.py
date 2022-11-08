@@ -1,3 +1,7 @@
+"""
+Tests for the /books/{book_id}/monthly-rating endpoint
+"""
+
 import json
 from datetime import datetime
 
