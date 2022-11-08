@@ -1,0 +1,6 @@
+aiohttp==3.8.3
+aiomcache==0.7.0
+fastapi[all]==0.86.0
+fastapi-cache2[memcache]==0.1.9
+httpx==0.23.0
+sqlalchemy==1.4.43
