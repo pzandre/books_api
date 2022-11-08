@@ -1,5 +1,3 @@
-import os
-import sys
 from typing import Any, Generator
 from unittest import mock
 
@@ -11,12 +9,10 @@ from fastapi_cache.backends.inmemory import InMemoryBackend
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-from src.books.router import book_router
-from src.database import Base, get_db
+from books.router import book_router
+from database import Base, get_db
 
 FastAPICache().init(InMemoryBackend(), prefix="test_book_api")
-
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 mock.patch("fastapi_cache.decorator.cache", lambda *args, **kwargs: lambda f: f).start()
 
