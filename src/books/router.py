@@ -8,21 +8,25 @@ from fastapi import APIRouter, Depends, Query, status
 from fastapi_cache.decorator import cache
 from sqlalchemy.orm import Session
 
-import repository
-import schemas
-from database import get_db
+import src.books.repository as repository
+import src.books.schemas as schemas
+from src.constants import BOOK_SEARCH_ENDPOINT
+from src.database import get_db
 
 book_router = APIRouter(tags=["books"])
 
 
 @book_router.get(
-    "/book",
+    f"/{BOOK_SEARCH_ENDPOINT}",
     response_model=schemas.APIResponse,
     status_code=status.HTTP_200_OK,
     summary="Search for books by title",
+    description="Search for books by title",
 )
 @cache(expire=60)
-async def search_books(search: str, page: Optional[int] = Query(default=None, ge=1)):
+async def search_books(
+    search: str = Query(...), page: Optional[int] = Query(default=None, ge=1)
+):
     """
     Search for books by title
 
@@ -31,20 +35,20 @@ async def search_books(search: str, page: Optional[int] = Query(default=None, ge
 
     :return: List of books
     """
-    
+
     results = await repository.get_books_by_title(search, page)
     return results
 
 
 @book_router.get(
-    "/book/top-rated",
+    f"/{BOOK_SEARCH_ENDPOINT}/top-rated",
     response_model=schemas.BookListWithReview,
     status_code=status.HTTP_200_OK,
     summary="Get top rated books",
+    description="Get top rated books",
 )
 async def get_top_rated_books(
-    limit: Optional[int] = Query(default=10, ge=1),
-    db: Session = Depends(get_db)
+    limit: Optional[int] = Query(default=10, ge=1), db: Session = Depends(get_db)
 ):
     """
     Get top rated books
@@ -60,10 +64,11 @@ async def get_top_rated_books(
 
 
 @book_router.get(
-    "/book/{book_id}/monthly-rating",
+    f"/{BOOK_SEARCH_ENDPOINT}/" + "{book_id}/monthly-rating",
     response_model=schemas.MonthlyRatingList,
     status_code=status.HTTP_200_OK,
     summary="Get book monthly rating",
+    description="Get book monthly rating",
 )
 async def get_monthly_rating(book_id: int, db: Session = Depends(get_db)):
     """
@@ -80,10 +85,11 @@ async def get_monthly_rating(book_id: int, db: Session = Depends(get_db)):
 
 
 @book_router.post(
-    "/book/{book_id}/review",
+    f"/{BOOK_SEARCH_ENDPOINT}/" + "{book_id}/review",
     response_model=schemas.BookReviewWithRatingAndBookID,
     status_code=status.HTTP_201_CREATED,
     summary="Add a review for a book",
+    description="Add a review for a book",
 )
 async def add_review(
     book_id: int,
@@ -105,10 +111,11 @@ async def add_review(
 
 
 @book_router.get(
-    "/book/{book_id}",
+    f"/{BOOK_SEARCH_ENDPOINT}/" + "{book_id}",
     response_model=schemas.BookWithReview,
     status_code=status.HTTP_200_OK,
     summary="Get book details",
+    description="Get book details",
 )
 @cache(expire=60)
 async def get_book(book_id: int, db: Session = Depends(get_db)):

@@ -11,7 +11,7 @@ class BookAuthor(BaseModel):
     """
     Book author schema
     """
-    
+
     name: str
     birth_year: Optional[int] = None
     death_year: Optional[int] = None
@@ -33,7 +33,7 @@ class BaseBookReview(BaseModel):
     """
     Base book review schema
     """
-    
+
     review: str = Field(..., min_length=1, max_length=500, description="Book review")
 
 
@@ -41,7 +41,7 @@ class BaseBookId(BaseModel):
     """
     Base book ID schema
     """
-    
+
     book_id: int
 
 
@@ -49,7 +49,7 @@ class BookRating(BaseModel):
     """
     Book rating schema
     """
-    
+
     rating: float = Field(default=0.0, ge=0.0, le=5.0, description="Book rating")
 
 

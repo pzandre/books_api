@@ -6,6 +6,7 @@ import os
 
 EXTERNAL_API_URL = os.getenv("EXTERNAL_API_URL", "https://gutendex.com/books/")
 PROJECT_URL = os.getenv("PROJECT_URL", "http://localhost:8000")
+BOOK_SEARCH_ENDPOINT = "books"
 
 MONTHS = {
     1: "January",
