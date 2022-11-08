@@ -14,10 +14,11 @@ After the package installation is finished, the project is set up and ready to r
 ### Running the server
 
 In the project directory, run the following commands:
+```
+cd src
 
-`cd src`
-`uvicorn main:app`
-
+uvicorn main:app
+```
 The application is now accessible at the following address `http://127.0.0.1:8000`
 
 To access the Interactive API Docs, visit `http://127.0.0.1:8000/docs` or `http://127.0.0.1:8000/redoc`
