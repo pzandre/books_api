@@ -6,7 +6,7 @@ from sqlalchemy import Column, DateTime, Integer, SmallInteger, String
 from sqlalchemy.orm import validates
 from sqlalchemy.sql import func
 
-from src.database import Base
+from database import Base
 
 
 class BookReview(Base):

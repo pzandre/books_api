@@ -10,11 +10,11 @@ from sqlalchemy import extract, select
 from sqlalchemy.orm import Session
 from sqlalchemy.sql import func
 
-import src.books.schemas as schemas
-import src.models as models
-from src.constants import (BOOK_SEARCH_ENDPOINT, EXTERNAL_API_URL, MONTHS,
+import books.schemas as schemas
+import models as models
+from constants import (BOOK_SEARCH_ENDPOINT, EXTERNAL_API_URL, MONTHS,
                            PROJECT_URL)
-from src.database import get_db
+from database import get_db
 
 
 async def get_books_by_title(search: str, page: int) -> list:

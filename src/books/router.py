@@ -8,10 +8,10 @@ from fastapi import APIRouter, Depends, Query, status
 from fastapi_cache.decorator import cache
 from sqlalchemy.orm import Session
 
-import src.books.repository as repository
-import src.books.schemas as schemas
-from src.constants import BOOK_SEARCH_ENDPOINT
-from src.database import get_db
+import books.repository as repository
+import books.schemas as schemas
+from constants import BOOK_SEARCH_ENDPOINT
+from database import get_db
 
 book_router = APIRouter(tags=["books"])
 

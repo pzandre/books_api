@@ -7,8 +7,8 @@ from fastapi_cache import FastAPICache
 from fastapi_cache.backends.inmemory import InMemoryBackend
 from starlette.config import Config
 
-from src.books.router import book_router
-from src.database import Base, engine
+from books.router import book_router
+from database import Base, engine
 
 config = Config(".env")
 
