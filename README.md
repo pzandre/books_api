@@ -13,8 +13,9 @@ After the package installation is finished, the project is set up and ready to r
 
 ### Running the server
 
-In the project directory, run the following command:
+In the project directory, run the following commands:
 
+`cd src`
 `uvicorn main:app`
 
 The application is now accessible at the following address `http://127.0.0.1:8000`
@@ -28,3 +29,9 @@ You can send requests to Gutendex to query books by their' title or ID. These re
 You can also submit reviews and ratings for a given book. These will be stored locally using SQLite as the Database.
 
 The API can also provide a list of top-rated books and the monthly average rating for a given book.
+
+### Tests
+
+To run the tests run the following command in the root of the project:
+
+`pytest`
